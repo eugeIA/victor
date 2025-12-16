@@ -2,25 +2,47 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  
+  /* Brand Colors */
+  --brand-blue: #1e3a8a; /* deeply rich blue */
+  --brand-blue-light: #3b82f6;
+  --brand-yellow: #facc15; /* vibrant yellow */
+  --brand-yellow-dark: #ca8a04;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #020617; /* Very dark slate */
+    --foreground: #f8fafc;
+    
+    --brand-blue: #3b82f6; /* Lighter blue for dark mode visibility */
+    --brand-blue-light: #60a5fa;
+    --brand-yellow: #fde047;
+    --brand-yellow-dark: #eab308;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-light: var(--brand-blue-light);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-yellow-dark: var(--brand-yellow-dark);
+  
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
