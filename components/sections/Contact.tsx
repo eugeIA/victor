@@ -30,7 +30,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-white/60">Téléphone</p>
-                  <p className="font-semibold text-lg">+243 81 000 0000</p>
+                  <p className="font-semibold text-lg">+243983238092</p>
                 </div>
               </div>
 
