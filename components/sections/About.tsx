@@ -42,7 +42,7 @@ export const About = () => {
             <h2 className="text-sm font-bold tracking-widest text-brand-blue uppercase mb-2">À Propos de Moi</h2>
             <h3 className="text-3xl md:text-4xl font-bold mb-6">Plus qu'un Animateur, un Créateur d'Ambiance</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Basé à <strong>Kinshasa</strong>, je suis Victor Mbwebwe. Avec plus de deux ans d'expérience sur scène, 
+              Basé à <strong>Kinshasa</strong>, je suis Victor Mbwebwe. Avec plusieurs années d'expérience sur scène, 
               j'ai développé une expertise unique dans l'art de captiver les foules. Que ce soit pour un mariage, 
               une conférence d'entreprise ou un gala, je m'adapte à chaque audience pour créer une atmosphère sur mesure.
             </p>

@@ -38,7 +38,7 @@ export const Hero = () => {
           </h1>
           
           <p className="text-xl text-muted-foreground max-w-lg leading-relaxed">
-            Je suis <strong className="text-foreground">Victor Mbwebwe</strong>, Maître de Cérémonie professionnel. 
+            Je suis <strong className="text-foreground">Guy-Victor Mbwebwe</strong>, Maître de Cérémonie professionnel, formateur en art oratoire, en animation évenementielle et en leadership et développement personnel.
             Je transforme vos événements en moments inoubliables avec charisme et élégance.
           </p>
           
@@ -53,7 +53,7 @@ export const Hero = () => {
 
           <div className="flex gap-8 pt-8 border-t border-border/50">
             <div>
-              <p className="text-3xl font-bold text-brand-blue dark:text-brand-blue-light">2+</p>
+              <p className="text-3xl font-bold text-brand-blue dark:text-brand-blue-light">5+</p>
               <p className="text-sm text-muted-foreground">Ans d'Expérience</p>
             </div>
             <div>
