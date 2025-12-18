@@ -2,6 +2,7 @@
 
 import { Section } from "../ui/Section";
 import { User, Award, Heart, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 const skills = [
   {
@@ -27,10 +28,13 @@ export const About = () => {
       <div className="grid md:grid-cols-2 gap-16 items-center">
         <div className="relative">
           <div className="aspect-square rounded-2xl overflow-hidden bg-neutral-200 dark:bg-neutral-800 relative z-10">
-             {/* Placeholder for About Image */}
-             <div className="w-full h-full bg-gradient-to-br from-brand-blue/20 to-brand-yellow/20 flex items-center justify-center">
-                <span className="text-muted-foreground">Image Portrait</span>
-             </div>
+             <Image
+               src="/hero3.jpg"
+               alt="Victor Mbwebwe - Portrait"
+               fill
+               className="object-cover"
+               sizes="(max-width: 768px) 100vw, 50vw"
+             />
           </div>
           {/* Decorative box behind */}
           <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-brand-yellow rounded-2xl -z-0" />

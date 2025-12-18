@@ -6,6 +6,12 @@ import { ArrowRight, Mic, Calendar } from "lucide-react";
 import Image from "next/image";
 
 export const Hero = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-background via-brand-blue/5 to-brand-yellow/5">
       {/* Background Decor Elements */}
@@ -43,10 +49,18 @@ export const Hero = () => {
           </p>
           
           <div className="flex flex-wrap gap-4 pt-4">
-            <Button size="lg" className="shadow-lg shadow-brand-blue/20">
+            <Button 
+              size="lg" 
+              className="shadow-lg shadow-brand-blue/20"
+              onClick={() => scrollToSection("contact")}
+            >
               Me Contacter <ArrowRight size={20} />
             </Button>
-            <Button variant="outline" size="lg">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => scrollToSection("gallery")}
+            >
               Voir mon Portfolio
             </Button>
           </div>
@@ -76,12 +90,16 @@ export const Hero = () => {
           {/* Abstract Shapes behind image */}
           <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue to-brand-yellow rounded-[2rem] rotate-3 opacity-20 transform translate-x-4 translate-y-4" />
           <div className="absolute inset-0 bg-background rounded-[2rem] border border-white/10 overflow-hidden shadow-2xl">
-             {/* Placeholder for Hero Image */}
-             <div className="w-full h-full bg-neutral-800 flex items-center justify-center relative overflow-hidden group">
+             <div className="w-full h-full relative overflow-hidden group">
+                <Image
+                  src="/hero2.jpg"
+                  alt="Victor Mbwebwe - Maître de Cérémonie"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-                {/* Use a placeholder image from Unsplash for now since we don't have the user's files uploaded yet or I can't see them directly. 
-                    Ideally this would be <Image src="/path-to-victor.jpg" ... /> */}
-                <span className="text-white/50 text-lg z-20">Photo de Victor Mbwebwe Ici</span>
                 
                 {/* Floating cards */}
                 <motion.div 

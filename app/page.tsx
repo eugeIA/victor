@@ -16,6 +16,6 @@ export default function Home() {
       <Gallery />
       <Contact />
       <Footer />
-    </main>
+      </main>
   );
 }
