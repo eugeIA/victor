@@ -2,8 +2,76 @@
 
 import { Section } from "../ui/Section";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
-const images = [1, 2, 3, 4, 5, 6]; // Placeholders
+const videos = [
+  {
+    src: "/portfolio1.mp4",
+    title: "Formation et Coaching en Prise de Parole en Public",
+    description: "Accompagnement personnalisé pour développer votre éloquence",
+  },
+  {
+    src: "/portfolio2.mp4",
+    title: "Mariage de Prestige",
+    description: "Célébration élégante et mémorable",
+  },
+  {
+    src: "/portfolio3.mp4",
+    title: "Nos Masterclass en Animation Événementielle",
+    description: "Formation professionnelle pour futurs animateurs",
+  },
+];
+
+const VideoCard = ({ src, title, description, featured = false }: { 
+  src: string; 
+  title: string; 
+  description: string; 
+  featured?: boolean;
+}) => {
+  const [showInfo, setShowInfo] = useState(true);
+
+  return (
+    <motion.div
+      whileHover={{ scale: 0.98 }}
+      className={`relative rounded-2xl overflow-hidden group bg-neutral-900 ${
+        featured ? "md:col-span-2 md:row-span-2" : ""
+      }`}
+      onMouseEnter={() => setShowInfo(true)}
+      onMouseLeave={() => setShowInfo(true)}
+    >
+      {/* Video with native controls */}
+      <video
+        src={src}
+        className="w-full h-full object-cover"
+        controls
+        preload="metadata"
+        controlsList="nodownload"
+        onPlay={() => setShowInfo(false)}
+        onPause={() => setShowInfo(true)}
+        onEnded={() => setShowInfo(true)}
+      >
+        Votre navigateur ne supporte pas la lecture de vidéos.
+      </video>
+      
+      {/* Overlay with info - disappears when playing */}
+      {showInfo && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none"
+        >
+          <div className="absolute bottom-16 left-0 right-0 p-6">
+            <h4 className="text-white font-bold text-lg md:text-xl mb-1 drop-shadow-lg">
+              {title}
+            </h4>
+            <p className="text-white/90 text-sm drop-shadow-md">{description}</p>
+          </div>
+        </motion.div>
+      )}
+    </motion.div>
+  );
+};
 
 export const Gallery = () => {
   return (
@@ -14,50 +82,32 @@ export const Gallery = () => {
           <h3 className="text-3xl md:text-5xl font-bold">En Action</h3>
         </div>
         <p className="max-w-md text-muted-foreground text-right md:text-left">
-          Quelques moments capturés lors de mes récentes prestations à Kinshasa et ailleurs.
+          Découvrez mes prestations lors de récents événements à Kinshasa et ailleurs.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-[600px]">
-        {/* Large featured item */}
-        <motion.div 
-            whileHover={{ scale: 0.98 }}
-            className="md:col-span-2 md:row-span-2 relative rounded-2xl overflow-hidden group bg-neutral-200 dark:bg-neutral-800"
-        >
-            <div className="absolute inset-0 bg-neutral-800 flex items-center justify-center">
-                 <span className="text-white/30 font-bold text-2xl">Grande Photo Événement</span>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-blue/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
-                <p className="text-white font-bold text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Concert Live 2024</p>
-            </div>
-        </motion.div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 min-h-[600px]">
+        {/* Featured video (large) */}
+        <VideoCard
+          src={videos[0].src}
+          title={videos[0].title}
+          description={videos[0].description}
+          featured
+        />
 
-        {/* Smaller items */}
-        <motion.div 
-            whileHover={{ scale: 0.98 }}
-            className="relative rounded-2xl overflow-hidden group bg-neutral-200 dark:bg-neutral-800"
-        >
-            <div className="absolute inset-0 bg-neutral-700 flex items-center justify-center">
-                 <span className="text-white/30 font-bold">Conférence</span>
-            </div>
-            <div className="absolute inset-0 bg-brand-yellow/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-brand-blue-dark font-bold">Voir Détails</span>
-            </div>
-        </motion.div>
+        {/* Smaller videos */}
+        <VideoCard
+          src={videos[1].src}
+          title={videos[1].title}
+          description={videos[1].description}
+        />
 
-        <motion.div 
-            whileHover={{ scale: 0.98 }}
-            className="relative rounded-2xl overflow-hidden group bg-neutral-200 dark:bg-neutral-800"
-        >
-            <div className="absolute inset-0 bg-neutral-700 flex items-center justify-center">
-                 <span className="text-white/30 font-bold">Mariage VIP</span>
-            </div>
-            <div className="absolute inset-0 bg-brand-blue/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-bold">Voir Détails</span>
-            </div>
-        </motion.div>
+        <VideoCard
+          src={videos[2].src}
+          title={videos[2].title}
+          description={videos[2].description}
+        />
       </div>
     </Section>
   );
 };
-
